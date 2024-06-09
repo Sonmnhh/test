@@ -15,8 +15,6 @@ def main():
         # Combine headline and content
         combined_text = headline + " " + content
 
-        # Make the API request with tokenized input
-        output = query({"inputs": combined_text})
 
         # Map labels to sentiment categories
         label_map = {0: 'Negative', 1: 'Neutral', 2: 'Positive'}
