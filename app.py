@@ -1,6 +1,11 @@
 import streamlit as st
 import requests
 
+API_KEY = st.secrets["HUGGING_FACE_API"]
+
+# Define Hugging Face API URL and authorization headers
+API_URL = "https://api-inference.huggingface.co/models/likith123/SSAF-FinBert"
+headers = {"Authorization": f"Bearer {API_KEY}"}
 
 # Streamlit UI
 def main():
@@ -15,6 +20,8 @@ def main():
         # Combine headline and content
         combined_text = headline + " " + content
 
+        # Make the API request with tokenized input
+        output = query({"inputs": combined_text})
 
         # Map labels to sentiment categories
         label_map = {0: 'Negative', 1: 'Neutral', 2: 'Positive'}
@@ -23,7 +30,9 @@ def main():
         # Display predicted sentiment percentages
         st.subheader("Predicted Sentiment:")
 
-
+# Ensure the output is not empty
+        if output:
+            predictions = output[0]
 
     # Define the mapping between labels and sentiment categories
             label_map = {'LABEL_0': 'Negative', 'LABEL_1': 'Neutral', 'LABEL_2': 'Positive'}
@@ -47,6 +56,11 @@ def main():
         else:
             st.write("No sentiment prediction available.")
 
+
+# Function to make API request
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()
 
 if __name__ == "__main__":
     main()
