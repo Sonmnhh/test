@@ -1,11 +1,6 @@
 import streamlit as st
 import requests
 
-API_KEY = st.secrets["HUGGING_FACE_API"]
-
-# Define Hugging Face API URL and authorization headers
-API_URL = "https://api-inference.huggingface.co/models/likith123/SSAF-FinBert"
-headers = {"Authorization": f"Bearer {API_KEY}"}
 
 # Streamlit UI
 def main():
