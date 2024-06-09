@@ -23,9 +23,7 @@ def main():
         # Display predicted sentiment percentages
         st.subheader("Predicted Sentiment:")
 
-# Ensure the output is not empty
-        if output:
-            predictions = output[0]
+
 
     # Define the mapping between labels and sentiment categories
             label_map = {'LABEL_0': 'Negative', 'LABEL_1': 'Neutral', 'LABEL_2': 'Positive'}
