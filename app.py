@@ -52,10 +52,5 @@ def main():
             st.write("No sentiment prediction available.")
 
 
-# Function to make API request
-def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
-    return response.json()
-
 if __name__ == "__main__":
     main()
